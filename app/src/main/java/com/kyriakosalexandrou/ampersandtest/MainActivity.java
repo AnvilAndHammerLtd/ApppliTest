@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NewsFeedAdapter.N
 
         newsFeed.add(new NewsFeed(R.drawable.zpark, "Zpark", false, new SocialAggregates(16, 0)));
         newsFeed.add(new NewsFeed(R.drawable.aigia, "Aigia Fuxia", true, new SocialAggregates(699, 0)));
-        newsFeed.add(new NewsFeed(R.drawable.cloud, "Cloud Strife", true, new SocialAggregates(0, 0)));
+        newsFeed.add(new NewsFeed(R.drawable.cloud, "Cloud Strife", true, new SocialAggregates(1, 0)));
         newsFeed.add(new NewsFeed(R.drawable.kapios, "Kapios Kapiou", false, new SocialAggregates(0, 0)));
         newsFeed.add(new NewsFeed(R.drawable.laimargos, "Sotirakis O Laimargos", false, new SocialAggregates(0, 0)));
         newsFeed.add(new NewsFeed(R.drawable.sailor_moon, "Sailor Moon", false, new SocialAggregates(23, 2)));
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NewsFeedAdapter.N
     @NonNull
     private ArrayList<NewsFeed> getRefreshedNewsFeedsData() {
         ArrayList<NewsFeed> newsFeed = new ArrayList<>();
-        
+
         newsFeed.add(new NewsFeed(R.drawable.laimargos, "Sotirakis O Laimargos", true, new SocialAggregates(1, 1)));
         newsFeed.add(new NewsFeed(R.drawable.sailor_moon, "Sailor Moon", false, new SocialAggregates(654, 231)));
         newsFeed.add(new NewsFeed(R.drawable.the_water_world, "The Water World", false, new SocialAggregates(0, 0)));

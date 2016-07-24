@@ -17,12 +17,6 @@ public class NewsFeed {
         this.mTitle = title;
         mIsFavourite = favourite;
         mSocialAggregates = socialAggregates;
-
-        if (mIsFavourite) {
-            mSocialAggregates.incrementLike();
-        } else {
-            mSocialAggregates.DecreaseLike();
-        }
     }
 
     public String getTitle() {
