@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ampersand Test</string>
+    <string name="single">%1$d</string>
+</resources>
