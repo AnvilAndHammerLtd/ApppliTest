@@ -83,6 +83,16 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
         return mNewsFeeds.size();
     }
 
+    public void clear() {
+        mNewsFeeds.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<NewsFeed> newsFeeds) {
+        mNewsFeeds.addAll(newsFeeds);
+        notifyDataSetChanged();
+    }
+
     public static class NewsFeedViewHolder extends RecyclerView.ViewHolder {
         public View mMainContainer;
         public ImageView mImage;
