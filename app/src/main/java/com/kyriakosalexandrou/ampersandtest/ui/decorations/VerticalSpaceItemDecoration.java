@@ -1,4 +1,4 @@
-package com.kyriakosalexandrou.ampersandtest.decorations;
+package com.kyriakosalexandrou.ampersandtest.ui.decorations;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

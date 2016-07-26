@@ -32,7 +32,7 @@
                     tools:src="@drawable/laimargos" />
 
                 <ImageButton
-                    android:id="@+id/favourite"
+                    android:id="@+id/user_liked"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -56,7 +56,7 @@
                 android:paddingStart="@dimen/margin_x_large"
                 android:paddingTop="@dimen/margin_xxxx_large">
 
-                <com.kyriakosalexandrou.ampersandtest.widgetcomponents.AppTextView
+                <com.kyriakosalexandrou.ampersandtest.widgets.AppTextView
                     android:id="@+id/title"
                     style="@style/Text.Bold"
                     app:customFont="trump_gothic_east_w01_bold.ttf"
@@ -74,7 +74,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.kyriakosalexandrou.ampersandtest.widgetcomponents.AppTextView
+                    <com.kyriakosalexandrou.ampersandtest.widgets.AppTextView
                         android:id="@+id/comment_counter"
                         style="@style/Text"
                         app:customFont="montserrat_light.ttf"
@@ -99,7 +99,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.kyriakosalexandrou.ampersandtest.widgetcomponents.AppTextView
+                    <com.kyriakosalexandrou.ampersandtest.widgets.AppTextView
                         android:id="@+id/likes_counter"
                         style="@style/Text"
                         app:customFont="montserrat_light.ttf"

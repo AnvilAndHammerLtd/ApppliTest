@@ -1,42 +1,166 @@
+
 package com.kyriakosalexandrou.ampersandtest.models;
 
-import android.support.annotation.DrawableRes;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Kyriakos on 23/07/2016.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewsFeed {
-    @DrawableRes
-    private int mImageRes;
-    private String mTitle;
-    private boolean mIsFavourite;
-    private SocialAggregates mSocialAggregates;
 
-    public NewsFeed(int imageRes, String title, boolean favourite, SocialAggregates socialAggregates) {
-        this.mImageRes = imageRes;
-        this.mTitle = title;
-        mIsFavourite = favourite;
-        mSocialAggregates = socialAggregates;
+    @SerializedName("total")
+    @Expose
+    private Integer total;
+    @SerializedName("per_page")
+    @Expose
+    private Integer perPage;
+    @SerializedName("current_page")
+    @Expose
+    private Integer currentPage;
+    @SerializedName("last_page")
+    @Expose
+    private Integer lastPage;
+    @SerializedName("next_page_url")
+    @Expose
+    private String nextPageUrl;
+    @SerializedName("prev_page_url")
+    @Expose
+    private Object prevPageUrl;
+    @SerializedName("from")
+    @Expose
+    private Integer from;
+    @SerializedName("to")
+    @Expose
+    private Integer to;
+    @SerializedName("data")
+    @Expose
+    private List<Datum> data = new ArrayList<Datum>();
+
+    /**
+     * @return The total
+     */
+    public Integer getTotal() {
+        return total;
     }
 
-    public String getTitle() {
-        return mTitle;
+    /**
+     * @param total The total
+     */
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
-    @DrawableRes
-    public int getImageRes() {
-        return mImageRes;
+    /**
+     * @return The perPage
+     */
+    public Integer getPerPage() {
+        return perPage;
     }
 
-    public SocialAggregates getAggregates() {
-        return mSocialAggregates;
+    /**
+     * @param perPage The per_page
+     */
+    public void setPerPage(Integer perPage) {
+        this.perPage = perPage;
     }
 
-    public boolean isFavourite() {
-        return mIsFavourite;
+    /**
+     * @return The currentPage
+     */
+    public Integer getCurrentPage() {
+        return currentPage;
     }
 
-    public void setFavourite(boolean enabled) {
-        mIsFavourite = enabled;
+    /**
+     * @param currentPage The current_page
+     */
+    public void setCurrentPage(Integer currentPage) {
+        this.currentPage = currentPage;
     }
+
+    /**
+     * @return The lastPage
+     */
+    public Integer getLastPage() {
+        return lastPage;
+    }
+
+    /**
+     * @param lastPage The last_page
+     */
+    public void setLastPage(Integer lastPage) {
+        this.lastPage = lastPage;
+    }
+
+    /**
+     * @return The nextPageUrl
+     */
+    public String getNextPageUrl() {
+        return nextPageUrl;
+    }
+
+    /**
+     * @param nextPageUrl The next_page_url
+     */
+    public void setNextPageUrl(String nextPageUrl) {
+        this.nextPageUrl = nextPageUrl;
+    }
+
+    /**
+     * @return The prevPageUrl
+     */
+    public Object getPrevPageUrl() {
+        return prevPageUrl;
+    }
+
+    /**
+     * @param prevPageUrl The prev_page_url
+     */
+    public void setPrevPageUrl(Object prevPageUrl) {
+        this.prevPageUrl = prevPageUrl;
+    }
+
+    /**
+     * @return The from
+     */
+    public Integer getFrom() {
+        return from;
+    }
+
+    /**
+     * @param from The from
+     */
+    public void setFrom(Integer from) {
+        this.from = from;
+    }
+
+    /**
+     * @return The to
+     */
+    public Integer getTo() {
+        return to;
+    }
+
+    /**
+     * @param to The to
+     */
+    public void setTo(Integer to) {
+        this.to = to;
+    }
+
+    /**
+     * @return The data
+     */
+    public List<Datum> getData() {
+        return data;
+    }
+
+    /**
+     * @param data The data
+     */
+    public void setData(List<Datum> data) {
+        this.data = data;
+    }
+
 }

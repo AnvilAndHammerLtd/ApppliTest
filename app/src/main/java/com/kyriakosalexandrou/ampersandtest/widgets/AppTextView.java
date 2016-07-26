@@ -1,4 +1,4 @@
-package com.kyriakosalexandrou.ampersandtest.widgetcomponents;
+package com.kyriakosalexandrou.ampersandtest.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
