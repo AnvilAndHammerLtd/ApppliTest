@@ -29,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/news_feed_main_image_height"
                     android:scaleType="fitXY"
-                    tools:src="@drawable/laimargos" />
+                    tools:src="@drawable/preview" />
 
                 <ImageButton
                     android:id="@+id/user_liked"
