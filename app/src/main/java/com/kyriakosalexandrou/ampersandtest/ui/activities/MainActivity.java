@@ -22,9 +22,9 @@ public class MainActivity extends BaseActivity {
 
     private void goToNewsFeedFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        NewsFeedFragment companyFragment = new NewsFeedFragment();
+        NewsFeedFragment fragment = new NewsFeedFragment();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragment, companyFragment, NewsFeedFragment.TAG);
+        ft.replace(R.id.fragment, fragment, NewsFeedFragment.TAG);
         ft.commit();
         fm.executePendingTransactions();
     }
