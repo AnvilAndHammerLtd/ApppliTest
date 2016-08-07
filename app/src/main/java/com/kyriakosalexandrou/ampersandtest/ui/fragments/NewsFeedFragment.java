@@ -19,6 +19,7 @@ import com.kyriakosalexandrou.ampersandtest.services.NewsFeedService;
 import com.kyriakosalexandrou.ampersandtest.ui.activities.BaseActivity;
 import com.kyriakosalexandrou.ampersandtest.ui.adapters.NewsFeedAdapter;
 import com.kyriakosalexandrou.ampersandtest.ui.decorations.VerticalSpaceItemDecoration;
+import com.kyriakosalexandrou.ampersandtest.widgets.AppSwipeRefreshLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -32,7 +33,7 @@ public class NewsFeedFragment extends BaseFragment implements NewsFeedAdapter.Ne
     private final NewsFeedService mNewsFeedService = new NewsFeedService(BaseActivity.REST_ADAPTER);
 
     private RecyclerView mNewsFeedRecycler;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private AppSwipeRefreshLayout mAppSwipeRefreshLayout;
 
     private NewsFeed mNewsFeed;
     private NewsFeedAdapter mNewsFeedAdapter;
@@ -57,10 +58,11 @@ public class NewsFeedFragment extends BaseFragment implements NewsFeedAdapter.Ne
 
     private void bindViews(View view) {
         mNewsFeedRecycler = (RecyclerView) view.findViewById(R.id.news_feed);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        mAppSwipeRefreshLayout = (AppSwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
     }
 
     private void requestNewsFeedData() {
+        mAppSwipeRefreshLayout.setRefreshing(true);
         ErrorEvent errorEvent = new ErrorEvent(getString(R.string.request_failure_news_feed));
         mNewsFeedService.getNewsFeedRequest(new NewsFeedEvent(errorEvent));
     }
@@ -73,26 +75,18 @@ public class NewsFeedFragment extends BaseFragment implements NewsFeedAdapter.Ne
     }
 
     private void setUpSwipeRefreshLayout() {
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mAppSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mSwipeRefreshLayout.setRefreshing(true);
                 requestNewsFeedData();
             }
         });
-
-        mSwipeRefreshLayout.setColorSchemeResources(
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light,
-                R.color.bondi_blue,
-                R.color.mine_shaft
-        );
     }
 
     @Subscribe
     public void onEventMainThread(NewsFeedEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
-        mSwipeRefreshLayout.setRefreshing(false);
+        onEventCalledCommonActions();
         updateNewsFeed(event.getNewsFeed());
     }
 
@@ -105,13 +99,18 @@ public class NewsFeedFragment extends BaseFragment implements NewsFeedAdapter.Ne
     @Subscribe
     public void onEventMainThread(ErrorEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
-        mSwipeRefreshLayout.setRefreshing(false);
+        onEventCalledCommonActions();
+
         Util.showSnackbar(mCoordinatorLayout, event.getErrorMessage(), getResources().getString(R.string.retry), Snackbar.LENGTH_INDEFINITE, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 requestNewsFeedData();
             }
         });
+    }
+
+    private void onEventCalledCommonActions() {
+        mAppSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
