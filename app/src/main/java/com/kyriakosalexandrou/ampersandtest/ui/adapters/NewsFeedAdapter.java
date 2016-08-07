@@ -67,18 +67,18 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
         holder.mTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String currentVisibleTitle = holder.mTitle.getText().toString();
+                String username = datum.getUser().getUsername();
+                String fullName = getFullName();
 
-                if (holder.mTitle.getText().equals(datum.getUser().getUsername())) {
-                    setFullName();
-                } else {
-                    holder.mTitle.setText(datum.getUser().getUsername());
-                }
+                String newTitle = currentVisibleTitle.equals(username) ? fullName : username;
+                holder.mTitle.setText(newTitle);
             }
 
-            private void setFullName() {
+            private String getFullName() {
                 String firstName = datum.getUser().getFirstName().toString();
                 String lastName = datum.getUser().getLastName().toString();
-                holder.mTitle.setText(mContext.getResources().getString(R.string.string_space_string, firstName, lastName));
+                return mContext.getResources().getString(R.string.string_space_string, firstName, lastName);
             }
         });
 
@@ -87,7 +87,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
             public void onClick(View v) {
                 /*
                 not sure why the server returns a list of them as there is always only one LikesCount object.
-                Therefore we assume that there is always only one LikesCount object
+                Therefore, we assume that there is always only one LikesCount object
                  */
                 LikesCount likesCount = datum.getLikesCount().get(0);
                 int currentLikes = likesCount.getLikes();
