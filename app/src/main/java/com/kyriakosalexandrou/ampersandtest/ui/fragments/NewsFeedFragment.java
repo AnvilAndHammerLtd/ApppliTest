@@ -2,7 +2,7 @@ package com.kyriakosalexandrou.ampersandtest.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 /**
  * Created by Kyriakos on 25/06/2016.
  */
-public class NewsFeedFragment extends Fragment implements NewsFeedAdapter.NewsFeedAdapterCallback {
+public class NewsFeedFragment extends BaseFragment implements NewsFeedAdapter.NewsFeedAdapterCallback {
     public static final String TAG = NewsFeedFragment.class.getName();
     private static final int VERTICAL_ITEM_SPACE = 40;
     private final NewsFeedService mNewsFeedService = new NewsFeedService(BaseActivity.REST_ADAPTER);
@@ -106,23 +106,16 @@ public class NewsFeedFragment extends Fragment implements NewsFeedAdapter.NewsFe
     public void onEventMainThread(ErrorEvent event) {
         EventBus.getDefault().removeStickyEvent(event);
         mSwipeRefreshLayout.setRefreshing(false);
-        Util.showToastMessageCentered(getContext(), event.getErrorMessage());
+        Util.showSnackbar(mCoordinatorLayout, event.getErrorMessage(), getResources().getString(R.string.retry), Snackbar.LENGTH_INDEFINITE, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestNewsFeedData();
+            }
+        });
     }
 
     @Override
     public void onNewsFeedItemClicked(int position) {
         mNewsFeedRecycler.smoothScrollToPosition(position);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
     }
 }

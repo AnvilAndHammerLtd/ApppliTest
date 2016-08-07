@@ -3,4 +3,5 @@
     <string name="single_number">%1$d</string>
     <string name="string_space_string">%1$s %2$s</string>
     <string name="request_failure_news_feed">Failed to receive news feed</string>
+    <string name="retry">Retry</string>
 </resources>

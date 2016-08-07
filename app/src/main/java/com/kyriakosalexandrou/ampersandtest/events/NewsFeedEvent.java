@@ -2,9 +2,6 @@ package com.kyriakosalexandrou.ampersandtest.events;
 
 import com.kyriakosalexandrou.ampersandtest.models.NewsFeed;
 
-/**
- * Created by Kyriakos on 25/06/2016.
- */
 public class NewsFeedEvent {
     private ErrorEvent mErrorEvent;
     private NewsFeed mNewsFeed;
