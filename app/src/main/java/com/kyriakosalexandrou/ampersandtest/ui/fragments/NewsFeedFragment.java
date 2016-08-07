@@ -46,8 +46,13 @@ public class NewsFeedFragment extends Fragment implements NewsFeedAdapter.NewsFe
         mNewsFeedAdapter = new NewsFeedAdapter(getContext(), this);
         setUpNewsFeedRecycler();
         setUpSwipeRefreshLayout();
-        requestNewsFeedData();
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        requestNewsFeedData();
     }
 
     private void bindViews(View view) {
@@ -62,7 +67,7 @@ public class NewsFeedFragment extends Fragment implements NewsFeedAdapter.NewsFe
 
     private void setUpNewsFeedRecycler() {
         mNewsFeedRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        mNewsFeedRecycler.setHasFixedSize(true);
+        mNewsFeedRecycler.setHasFixedSize(false);
         mNewsFeedRecycler.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
         mNewsFeedRecycler.setAdapter(mNewsFeedAdapter);
     }
